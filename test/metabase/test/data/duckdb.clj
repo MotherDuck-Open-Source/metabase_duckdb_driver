@@ -25,12 +25,10 @@
 (defmethod tx/supports-time-type? :duckdb [_driver] false)
 
 (defmethod tx/dbdef->connection-details :duckdb [_ _ {:keys [database-name]}] 
-  {:read_only       false
-   :old_implicit_casting   true
+  {:old_implicit_casting   true
    "temp_directory"        (format "%s.ddb.tmp" database-name)
    :database_file (format "%s.ddb" database-name)
-   "custom_user_agent"     "metabase_test"
-   :allow_unsigned_extensions  false
+   "custom_user_agent"     "metabase_test" 
    :subname                (format "%s.ddb" database-name)})
 
 (doseq [[base-type db-type] {:type/BigInteger     "BIGINT"

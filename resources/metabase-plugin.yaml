@@ -7,31 +7,23 @@ contact-info:
   address: golubov.ax@yandex.ru
 driver:
   name: duckdb
-  display-name: DuckDB
+  display-name: MotherDuck
   lazy-load: true
   parent: sql-jdbc
   connection-properties:
     - name: database_file
-      display-name: Database file
-      placeholder: /home/to/the.duckdb (or ':memory:' for 'in memory' mode)
-      required: false
-    - name: read_only
-      display-name: Establish a read-only connection
-      default: false
-      type: boolean
+      display-name: MotherDuck database path
+      placeholder: "md:my_db"
+      required: true
     - name: old_implicit_casting
       display-name: Use DuckDB old_implicit_casting option
       default: true
-      type: boolean
-    - name: allow_unsigned_extensions
-      display-name: Allow loading unsigned extensions
-      default: false
       type: boolean
     - name: motherduck_token
       display-name: Motherduck Token
       type: secret
       secret-kind: password
-      required: false
+      required: true
 
 init:
   - step: load-namespace
